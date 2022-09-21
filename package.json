@@ -1,0 +1,27 @@
+{
+  "name": "banco-de-dados-alpha-edtech",
+  "version": "1.0.0",
+  "description": "Estudando banco de dados",
+  "main": "./src/app.js",
+  "scripts": {
+    "test": "node .",
+    "dev": "nodemon ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/janascher/banco-de-dados-alpha-edtech.git"
+  },
+  "author": "Janaína Scher",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/janascher/banco-de-dados-alpha-edtech/issues"
+  },
+  "homepage": "https://github.com/janascher/banco-de-dados-alpha-edtech#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.2",
+    "pg": "^8.8.0"
+  }
+}
