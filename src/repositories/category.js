@@ -4,7 +4,7 @@ async function categoryInsert(pool, values) {
         const text = `
         INSERT INTO loja.categoria_produtos (nome) 
             VALUES($1) RETURNING *;
-        `
+        `;
 
         const res = await pool.query(text, values);
         console.table(res.rows);
@@ -21,7 +21,7 @@ async function categorySelectDesc(pool, values) {
         SELECT * FROM loja.categoria_produtos 
 	        WHERE nome = $1 
 		ORDER BY created_at DESC;
-        `
+        `;
 
         const res = await pool.query(text, values);
         console.table(res.rows);
@@ -38,7 +38,7 @@ async function categorySelectAsc(pool, values) {
         SELECT * FROM loja.categoria_produtos 
 	        WHERE nome = $1 
 		ORDER BY created_at ASC;
-        `
+        `;
 
         const res = await pool.query(text, values);
         console.table(res.rows);
@@ -57,7 +57,7 @@ async function categoryUpdate(pool, values) {
                 nome = $1,
                 updated_at = now() 
         WHERE id = $2;
-        `
+        `;
 
         const res = await pool.query(text, values);
         console.table(res.rows);
@@ -72,7 +72,7 @@ async function categoryDelete(pool, values) {
         const text = `
         DELETE FROM loja.categoria_produtos 
         WHERE id = $1;
-        `
+        `;
 
         const res = await pool.query(text, values);
         console.table(res.rows);
@@ -81,10 +81,10 @@ async function categoryDelete(pool, values) {
     }
 }
 
-module.exports = { 
-    categoryInsert, 
+module.exports = {
+    categoryInsert,
     categorySelectDesc,
-    categorySelectAsc, 
-    categoryUpdate, 
-    categoryDelete 
+    categorySelectAsc,
+    categoryUpdate,
+    categoryDelete,
 };
