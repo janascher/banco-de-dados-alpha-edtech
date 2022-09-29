@@ -1,19 +1,18 @@
 const dotenv = require("dotenv");
 const { Pool } = require("pg");
-const test = require("./test");
-/* const { 
-    categoryInsert, 
+const {
+    categoryInsert,
     categorySelectDesc,
-    categorySelectAsc, 
-    categoryUpdate, 
-    categoryDelete 
+    categorySelectAsc,
+    categoryUpdate,
+    categoryDelete,
 } = require("./category");
-const { 
-    productInsert, 
+const {
+    productInsert,
     productSelectDesc,
-    productSelectAsc, 
-    productUpdate, 
-    productDelete 
+    productSelectAsc,
+    productUpdate,
+    productDelete,
 } = require("./products");
 const {
     userInsert,
@@ -21,7 +20,13 @@ const {
     userSelectAsc,
     userUpdate,
     userDelete,
-} = require("./users") */
+} = require("./users");
+const {
+    cartInsert,
+    cartSelect,
+    cartDelete,
+    cartTotalAmount
+} = require("./cart");
 
 dotenv.config();
 
@@ -125,19 +130,19 @@ testUpdate();  */
 
 // --- Testando a seleção de dados DESC --
 /* async function testSelectDesc() {
-    productSelectDesc(pool, ["Lança Perfume", "5e964c4c-2239-4237-9ba7-8dbadf7de426"]);
+    productSelectDesc(pool, ["Amaro", "cc206fd5-4063-46ed-b8a6-50802f990eab"]);
 }
 
 testSelectDesc(); */
 
 // --- Testando a seleção de dados ASC --
 /* async function testSelectAsc() {
-    productSelectAsc(pool, ["Lança Perfume", "5e964c4c-2239-4237-9ba7-8dbadf7de426"]);
+    productSelectAsc(pool, ["Amaro", "cc206fd5-4063-46ed-b8a6-50802f990eab"]);
 }
 
 testSelectAsc();  */
 
-// #### TESTE CLIENTE ####
+// #### TESTE USUÁRIO ####
 // --- Testando a inserção  --
 /* async function testInsert() {
     userInsert(pool, [
@@ -185,3 +190,35 @@ testSelectDesc(); */
 }
 
 testSelectAsc();  */
+
+// ############### TESTE CARRINHO DE COMPRAS ###############
+// --- Testando a inserção  --
+/* async function testInsert() {
+    cartInsert(pool, [
+        "711d3e2a-a1cb-4f59-aa74-3120960fb692",
+        "3a307e34-e049-4c51-94f1-a9d6d3974fe9"
+    ]);
+}
+
+testInsert(); */
+
+// --- Testando a deleção por seu ID --
+/* async function testDelete() {
+    userDelete(pool, ["ea47467e-2fb0-456f-b97c-d1246f1df7e7"]);
+}
+
+testDelete(); */
+
+// --- Testando a seleção de dados DESC --
+/* async function testSelect() {
+    cartSelect(pool);
+}
+
+testSelect(); */
+
+// --- Testando o cálculo da quantidade de produtos existente no carrinho --
+/* async function testSelect() {
+    cartTotalAmount(pool);
+}
+
+testSelect(); */

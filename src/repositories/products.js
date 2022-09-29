@@ -23,12 +23,30 @@ async function productInsert(pool, values) {
 // --- Seleção de dados DESC --
 async function productSelectDesc(pool, values) {
     try {
-        const text = `
+        /*const text = `
         SELECT id, id_categoria_produtos, nome, preco, marca, descricao FROM loja.registro_de_produtos 
 	        WHERE marca = $1
             AND id_categoria_produtos = $2  
 		ORDER BY preco DESC;
-        `;
+        `; */
+
+        // Alterado a query acima para buscar registros unindo dados de mais de uma tabela:
+        const text = `
+        SELECT
+            r.id,
+            u.nome as usuario,
+            c.nome as categoria_produto,
+            r.nome,
+            r.preco,
+            r.marca,
+            r.descricao
+        from loja.registro_de_produtos as r
+            inner join loja.usuario as u on u.id = r.id_administrador
+            inner join loja.categoria_produtos as c on c.id = r.id_categoria_produtos
+            WHERE marca = $1
+            AND id_categoria_produtos = $2  
+		ORDER BY preco DESC;
+        `
 
         const res = await pool.query(text, values);
         console.table(res.rows);
@@ -41,12 +59,30 @@ async function productSelectDesc(pool, values) {
 // --- Seleção de dados ASC --
 async function productSelectAsc(pool, values) {
     try {
-        const text = `
+        /* const text = `
         SELECT id, id_categoria_produtos, nome, preco, marca, descricao FROM loja.registro_de_produtos 
 	        WHERE marca = $1
             AND id_categoria_produtos = $2  
 		ORDER BY preco ASC;
-        `;
+        `; */
+
+        // Alterado a query acima para buscar registros unindo dados de mais de uma tabela:
+        const text = `
+        SELECT
+            r.id,
+            u.nome as usuario,
+            c.nome as categoria_produto,
+            r.nome,
+            r.preco,
+            r.marca,
+            r.descricao
+        from loja.registro_de_produtos as r
+            inner join loja.usuario as u on u.id = r.id_administrador
+            inner join loja.categoria_produtos as c on c.id = r.id_categoria_produtos
+            WHERE marca = $1
+            AND id_categoria_produtos = $2  
+		ORDER BY preco ASC;
+        `
 
         const res = await pool.query(text, values);
         console.table(res.rows);
